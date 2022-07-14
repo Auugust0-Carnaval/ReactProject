@@ -1,23 +1,53 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+
+function Capslock(props){
+  const textoinserido = props.children;
+  const textoEmCapslock = textoinserido.toUpperCase();
+
+  return <div>{textoEmCapslock}</div>
+
+}
+
+
+function Contador(){
+ const [contador,setContador] = useState(1); 
+
+
+  function adicionarContador(){
+    setContador(contador + 1);   
+  }
+
+  function diminuirContador(){
+    setContador(contador - 1)
+  }
+
+  return (
+    <div>
+      <div class="card-shadow">
+        <div class= "card-body">
+          <h1 class = "text-success">{contador}</h1>
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-danger" onClick={adicionarContador}>ADICIONAR</button>
+            <button type="button" class="btn btn-success" onClick={diminuirContador}>DIMINUIR</button>
+          </div>
+        </div>
+      </div>  
+    </div>
+
+  )
+}
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <strong class="text-success">
+       <Capslock>augusto de oliveira carnaval</Capslock>
+      </strong>
+
+      <Contador/>
     </div>
   );
 }
