@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
+import alertify from 'alertifyjs';
 
 function Capslock(props){
   const textoinserido = props.children;
@@ -10,13 +11,21 @@ function Capslock(props){
 
 }
 
+function ModalAlert(){
+  alertify.dialog('alert').set({transition:'flipx',message: 'CONTADOR CHEGOU PASSOU DE 10'}).show(); 
+}
+
 
 function Contador(){
  const [contador,setContador] = useState(1); 
 
 
   function adicionarContador(){
-    setContador(contador + 1);   
+    setContador(contador + 1);  
+    
+    if(contador == 10){
+      ModalAlert();
+    }
   }
 
   function diminuirContador(){
@@ -43,7 +52,7 @@ function App() {
 
   return (
     <div className="App">
-      <strong class="text-success">
+      <strong class="text-primary">
        <Capslock>augusto de oliveira carnaval</Capslock>
       </strong>
 
