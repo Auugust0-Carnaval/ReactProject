@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'alertifyjs/build/css/alertify.css';
-import alertify from 'alertifyjs';
+import '@ionic/react/css/core.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
