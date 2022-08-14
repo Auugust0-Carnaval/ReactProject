@@ -2,19 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
 import alertify from 'alertifyjs';
+import { IonButton, IonContent, useIonAlert, IonAlert } from '@ionic/react';
+import { star } from 'ionicons/icons';
+
 
 function Capslock(props){
   const textoinserido = props.children;
   const textoEmCapslock = textoinserido.toUpperCase();
-
   return <div>{textoEmCapslock}</div>
 
 }
-
-function ModalAlert(){
-  alertify.dialog('alert').set({transition:'flipx',message: 'CONTADOR CHEGOU PASSOU DE 10'}).show(); 
-}
-
 
 function Contador(){
  const [contador,setContador] = useState(1); 
@@ -24,12 +21,16 @@ function Contador(){
     setContador(contador + 1);  
     
     if(contador == 10){
-      ModalAlert();
+      var text = `o numero é maior que ${contador}`;
+      alert(text.toUpperCase());
     }
   }
 
   function diminuirContador(){
     setContador(contador - 1)
+    if(contador <= 0){
+      alert('Contador esta negativo');
+    }
   }
 
   return (
@@ -40,6 +41,10 @@ function Contador(){
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <button type="button" class="btn btn-danger" onClick={adicionarContador}>ADICIONAR</button>
             <button type="button" class="btn btn-success" onClick={diminuirContador}>DIMINUIR</button>
+            <IonContent> 
+              <IonButton color="primary">teste</IonButton>
+            </IonContent>
+            
           </div>
         </div>
       </div>  
@@ -49,14 +54,16 @@ function Contador(){
 }
 
 function App() {
-
   return (
     <div className="App">
-      <strong class="text-primary">
-       <Capslock>augusto de oliveira carnaval</Capslock>
-      </strong>
-
-      <Contador/>
+      <div class = "container" id="container">
+        <strong>
+          <h3 class= "text-success">
+            <Capslock>Primeiro projeto reactjs</Capslock>
+          </h3>
+        </strong>
+        <Contador></Contador>
+      </div>
     </div>
   );
 }
