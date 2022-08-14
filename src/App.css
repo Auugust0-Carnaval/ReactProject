@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.container{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border: solid green;
+  height: 30rem;
+  padding: 3%;
+  border-radius: 0.7%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +45,4 @@
     transform: rotate(360deg);
   }
 }
+
