@@ -5,6 +5,7 @@ import alertify from 'alertifyjs';
 import { IonButton, IonContent, useIonAlert, IonAlert } from '@ionic/react';
 import { star } from 'ionicons/icons';
 
+import { toast } from 'react-toastify';
 
 function Capslock(props){
   const textoinserido = props.children;
@@ -14,16 +15,12 @@ function Capslock(props){
 }
 
 function Contador(){
+
  const [contador,setContador] = useState(1); 
 
 
   function adicionarContador(){
     setContador(contador + 1);  
-    
-    if(contador == 10){
-      var text = `o numero é maior que ${contador}`;
-      alert(text.toUpperCase());
-    }
   }
 
   function diminuirContador(){
@@ -41,10 +38,6 @@ function Contador(){
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <button type="button" class="btn btn-danger" onClick={adicionarContador}>ADICIONAR</button>
             <button type="button" class="btn btn-success" onClick={diminuirContador}>DIMINUIR</button>
-            <IonContent> 
-              <IonButton color="primary">teste</IonButton>
-            </IonContent>
-            
           </div>
         </div>
       </div>  
@@ -54,6 +47,13 @@ function Contador(){
 }
 
 function App() {
+
+  const text = `perigo`;
+
+  const notify = () => {
+    toast("ola");
+  }
+
   return (
     <div className="App">
       <div class = "container" id="container">
@@ -62,10 +62,30 @@ function App() {
             <Capslock>Primeiro projeto reactjs</Capslock>
           </h3>
         </strong>
-        <Contador></Contador>
+        <Contador></Contador><hr></hr>
+        <button onClick={notify}>Notify</button>
       </div>
     </div>
   );
 }
 
 export default App;
+
+
+// import React from 'react';
+
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
+// function App(){
+//   const notify = () => toast("Wow so easy!");
+
+//   return (
+//     <div>
+//       <button onClick={notify}>Notify!</button>
+//       <ToastContainer />
+//     </div>
+//   );
+// }
+
+// export default App;
